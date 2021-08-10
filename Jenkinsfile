@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     stages {
-        stage('Stage SCM') {
+        stage('Stage SCM Polling') {
             steps {
                 echo 'SCM GitHub says Hello World!' 
             }
