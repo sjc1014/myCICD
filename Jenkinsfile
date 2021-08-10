@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Stage SCM Polling') {
             steps {
-                echo 'SCM GitHub says Hello World!' 
+                echo 'SCM GitHub says Hello World!!' 
             }
         }
     }
