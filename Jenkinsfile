@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Stage SCM') {
             steps {
-                echo 'SCM GitHub says Hello world!' 
+                echo 'SCM GitHub says Hello World!' 
             }
         }
     }
