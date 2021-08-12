@@ -6,5 +6,10 @@ pipeline {
                 echo 'SCM GitHub says Hello World!!' 
             }
         }
+        stage('Checking Docker Version') {
+            steps {
+                sh 'docker --version'
+            }
+        }
     }
 }
