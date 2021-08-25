@@ -1,14 +1,11 @@
 pipeline {
-    agent any 
+    agent { label 'slave' }
     stages {
-        stage('Stage SCM Polling') {
+        stage('Hello') {
             steps {
-                echo 'SCM GitHub says Hello World!!' 
-            }
-        }
-        stage('Checking Docker Version') {
-            steps {
-                sh 'docker --version'
+                sh 'java -version'
+                echo 'Get working directory'
+                sh 'pwd'
             }
         }
     }
