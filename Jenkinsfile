@@ -1,3 +1,5 @@
+@Library('pipeline-library-demo')
+
 pipeline {
     agent { label 'slave' }
     stages {
@@ -6,6 +8,10 @@ pipeline {
                 sh 'java -version'
                 echo 'Get working directory'
                 sh 'pwd'
+            }
+            steps {
+                echo 'Hello World!'
+                sayHello('Steve')
             }
         }
     }
