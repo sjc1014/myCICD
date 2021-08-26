@@ -9,6 +9,8 @@ pipeline {
                 echo 'Get working directory'
                 sh 'pwd'
             }
+        }
+        stage('Hello-Library') {
             steps {
                 echo 'Hello World!'
                 sayHello('Steve')
