@@ -1,7 +1,11 @@
 # myCICD
 myCICD Groovy Library Repo
 
-
+Library Has Four Types of Jenkinsfile option:
+Default Jenkinfile this basic template
+JenkinsfileJavaMaven that builds Pet Store Java app using maven
+JenkinsfilejavaMavenSharedLibrary - same function as above but leveragin SL
+JenkinsfileJavaMavenSharedLibraryMultibranch - same function as above with multibrnach options
 
 docker run -d --restart=always \
 -v /var/run/docker.sock:/var/run/docker.sock \
