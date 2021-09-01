@@ -1,0 +1,94 @@
+@Library('pipeline-library-demo@main') _
+
+pipeline {
+
+    agent {
+        node {
+            label 'slave'
+        }
+    }
+
+    tools {
+        maven 'maven3'
+    }
+
+    options {
+        buildDiscarder logRotator(
+                daysToKeepStr: '15',
+                numToKeepStr: '10'
+        )
+    }
+
+    environment {
+        APP_NAME = "DCUBE_APP"
+        APP_ENV  = "DEV"
+    }
+
+
+    stages {
+
+        stage('Cleanup Workspace') {
+            steps {
+                cleanWs()
+                sh """
+                echo "Cleaned Up Workspace for ${APP_NAME}"
+                """
+            }
+        }
+
+        stage('Code Checkout') {
+            steps {
+                gitCheckout(
+                    branch: "main",
+                    url: "https://github.com/spring-projects/spring-petclinic.git"
+                )
+            }
+        }
+
+        stage(' Unit Testing') {
+            steps {
+                sh """
+                echo "Running Unit Tests"
+                """
+            }
+        }
+
+        stage('Code Analysis') {
+            steps {
+                sh """
+                echo "Running Code Analysis"
+                """
+            }
+        }
+
+        // stage('Code Build') {
+        //    steps {
+        //        sh 'mvn install -Dmaven.test.skip=true'
+        //    }
+        // }
+
+        stage('Build Deploy Code') {
+            when {
+                branch 'develop'
+            }
+            steps {
+                sh """
+                echo "Building Artifact"
+                """
+
+                sh """
+                echo "Deploying Code"
+                """
+            }
+        }
+
+        stage('Printing All Global Variables') {
+            steps {
+                sh """
+                env
+                """
+            }
+        }
+
+    }
+}
